@@ -1,11 +1,19 @@
+import os
 import joblib
 import pandas as pd
 
+# Current file (predict.py) ka folder path nikalna
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Relative paths ko absolute paths me convert karna
+MODEL_PATH = os.path.join(BASE_DIR, "..", "models", "best_model.pkl")
+SCALER_PATH = os.path.join(BASE_DIR, "..", "models", "scaler.pkl")
+
 # Load Model
-model = joblib.load("../models/best_model.pkl")
+model = joblib.load(MODEL_PATH)
 
 # Load Scaler
-scaler = joblib.load("../models/scaler.pkl")
+scaler = joblib.load(SCALER_PATH)
 
 # Numerical columns used during scaling
 numerical_features = [
